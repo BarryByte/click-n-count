@@ -7,6 +7,7 @@ const pollSchema = new mongoose.Schema({
   type: { type: String, enum: ["multiple-choice", "open-ended"], required: true },
   options: { type: [String], default: [] },
   results: { type: Object, default: {} },
+  
 });
 
 module.exports = mongoose.model("Poll", pollSchema);

@@ -5,8 +5,8 @@ const cors = require("cors");
 const http = require("http");
 const WebSocket = require("ws");
 
-const Session = require("./models/Session"); // Session model
-const Poll = require("./models/Poll"); // Poll model
+const Session = require("./models/Session"); 
+const Poll = require("./models/Poll"); 
 
 const app = express();
 const server = http.createServer(app);
@@ -36,7 +36,7 @@ mongoose
       SESSION ROUTES
    ======================= */
 
-// **Create a Session**
+// Create a Session
 app.post("/create-session", async (req, res) => {
   try {
     let sessionCode, sessionExists;
@@ -57,7 +57,7 @@ app.post("/create-session", async (req, res) => {
   }
 });
 
-// **Join a Session**
+// Join a Session
 app.get("/session/:sessionCode", async (req, res) => {
   try {
     const { sessionCode } = req.params;
@@ -76,7 +76,7 @@ app.get("/session/:sessionCode", async (req, res) => {
       POLL ROUTES
    ======================= */
 
-// **Create a Poll inside a Session**
+// Create a Poll inside a Session
 app.post("/session/:sessionCode/create-poll", async (req, res) => {
   try {
     const { sessionCode } = req.params;
@@ -113,7 +113,7 @@ app.post("/session/:sessionCode/create-poll", async (req, res) => {
   }
 });
 
-// **Vote on a Poll**
+// Vote on a Poll
 app.post("/poll/:pollId/vote", async (req, res) => {
   try {
     const { pollId } = req.params;
@@ -178,7 +178,7 @@ wss.on("connection", (ws) => {
         }
       }
       
-      // **Vote on a Poll**
+      // Vote on a Poll
 if (event === "vote") {
   try {
     const { pollId, option } = data;
